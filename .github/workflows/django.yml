@@ -94,9 +94,9 @@ jobs:
 
       - name: Run SonarCloud Scan
         env:
-          SONAR_TOKEN: c390a9c6ddb2b406a7299380810e2c1b2ea5f20d
-          SONAR_PROJECT_KEY: inturiabhiram-dotcom_abhiram-devops-x24315851
-          SONAR_ORG: inturiabhiram-dotcom
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_ORG: ${{ secrets.SONAR_ORG }}
         run: |
           sonar-scanner \
             -Dsonar.login=$SONAR_TOKEN \

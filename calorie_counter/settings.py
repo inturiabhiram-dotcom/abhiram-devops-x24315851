@@ -14,7 +14,7 @@ from django.core.management.utils import get_random_secret_key
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "bdgdydbdj33354793215@#4rkffp:j4%^7"
+SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
