@@ -1,10 +1,8 @@
-"""Project Models here"""
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
 class Food(models.Model):
-	"""Food model"""
 	name = models.CharField(max_length=200 ,null=False)
 	quantity = models.PositiveIntegerField(null=False,default=0)
 	calorie = models.FloatField(null=False,default=0)
@@ -14,7 +12,6 @@ class Food(models.Model):
 		return self.name
 
 class Profile(models.Model):
-	"""Profile model"""
 	person_of = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
 	calorie_count = models.FloatField(default=0,null=True,blank=True)
 	food_selected = models.ForeignKey(Food,on_delete=models.CASCADE,null=True,blank=True)
@@ -35,12 +32,10 @@ class Profile(models.Model):
 			super(Profile, self).save(*args,**kwargs)
 		else:
 			super(Profile,self).save(*args,**kwargs)
-
 	def __str__(self):
 		return str(self.person_of.username)
 
 class PostFood(models.Model):
-	"""Postfood model"""
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     food = models.ForeignKey(Food,on_delete=models.CASCADE)
     calorie_amount = models.FloatField(default=0,null=True,blank=True)
