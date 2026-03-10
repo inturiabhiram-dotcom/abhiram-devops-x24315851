@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  prebuild_stage:
+  build_stage:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,9 +36,9 @@ jobs:
           java -version
 
 
-  pylint_stage:
+  pylint_analysis_stage:
     runs-on: ubuntu-latest
-    needs: prebuild_stage
+    needs: build_stage
 
     steps:
       - name: Checkout repo
@@ -72,9 +72,9 @@ jobs:
           path: coverage.xml
 
 
-  sonar_stage:
+  sonar_analysis_stage:
     runs-on: ubuntu-latest
-    needs: pylint_stage
+    needs: pylint_analysis_stage
 
     steps:
       - name: Checkout repo
@@ -104,6 +104,7 @@ jobs:
             -Dsonar.projectKey=$SONAR_PROJECT_KEY \
             -Dsonar.organization=$SONAR_ORG \
             -Dsonar.sources=. \
+            -Dsonar.python.coverage.reportPaths=coverage.xml \
             -Dsonar.exclusions=.c9/**,**/migrations/**,**/__pycache__/**,**/tests.py
 
       - name: Create Deployment Package
@@ -128,9 +129,9 @@ jobs:
           retention-days: 5
 
 
-  deploy_stage:
+  deployment_stage:
     runs-on: ubuntu-latest
-    needs: sonar_stage
+    needs: sonar_analysis_stage
 
     steps:
       - name: Download Deployment Package
