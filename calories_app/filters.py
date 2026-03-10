@@ -1,5 +1,7 @@
 """Filters for food search functionality."""
 
+# pylint: disable=relative-beyond-top-level
+
 import django_filters
 from django_filters import CharFilter
 
