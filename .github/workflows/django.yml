@@ -105,7 +105,8 @@ jobs:
             -Dsonar.organization=$SONAR_ORG \
             -Dsonar.sources=. \
             -Dsonar.python.coverage.reportPaths=coverage.xml \
-            -Dsonar.exclusions=.c9/**,**/migrations/**,**/__pycache__/**,**/tests.py
+            -Dsonar.coverage.exclusions=**/* \
+            -Dsonar.exclusions=.c9/**,**/migrations/**,**/__pycache__/**
 
       - name: Create Deployment Package
         run: |
