@@ -1,9 +1,7 @@
 """Filters for food search functionality."""
-
+from .models import Food
 import django_filters
 from django_filters import CharFilter
-from .models import Food
-
 
 class FoodFilter(django_filters.FilterSet):
     """Filter class for searching food items."""

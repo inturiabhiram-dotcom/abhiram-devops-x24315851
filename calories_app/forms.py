@@ -1,9 +1,9 @@
 """Forms used in the calories application."""
 
+from .models import Food, Profile
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
-from .models import Food, Profile
 
 
 # pylint: disable=too-many-ancestors, too-few-public-methods

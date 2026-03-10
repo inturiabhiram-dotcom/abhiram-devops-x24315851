@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 class Food(models.Model):
     """Food model."""
 
+    objects = models.Manager()
+
     name = models.CharField(max_length=200, null=False)
     quantity = models.PositiveIntegerField(null=False, default=0)
     calorie = models.FloatField(null=False, default=0)
@@ -19,6 +21,8 @@ class Food(models.Model):
 
 class Profile(models.Model):
     """Profile model."""
+
+    objects = models.Manager()
 
     person_of = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     calorie_count = models.FloatField(default=0, null=True, blank=True)
@@ -65,6 +69,8 @@ class Profile(models.Model):
 
 class PostFood(models.Model):
     """PostFood model."""
+
+    objects = models.Manager()
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     food = models.ForeignKey(Food, on_delete=models.CASCADE)
